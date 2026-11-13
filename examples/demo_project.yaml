@@ -1,0 +1,37 @@
+# Demo script: scenes -> beats. One beat = one shot = one main action + one camera move.
+# shot-ledger expands beats into shots, snaps frames to 124/141/158/175/192/209 and stretches for dialogue.
+project: demo-rooftop
+style: East Asian photorealistic cinematic style, medium shot
+engine:
+  base_model: h3_prism_turbo
+  steps: 9
+  res_mode: 544
+gpu:
+  sec_per_frame: 1.5       # measure on your own GPU and update
+  shot_overhead_sec: 40
+  keyframe_sec: 25
+  usd_per_hour: 0.6
+scenes:
+  - id: S01
+    setting: rooftop terrace at dusk, warm orange sunset backlight, city skyline behind
+    state: a young woman in a beige trench coat stands at the railing, a man in a grey suit near the door
+    keyframe_prompt: cinematic photograph, rooftop terrace at dusk, a young woman in a beige trench coat at the railing, a man in a grey suit by the door, warm backlight
+    sound: wind, distant traffic
+    beats:
+      - action: the man pushes open the rooftop door and comes out onto the terrace
+        camera: static medium shot
+        frames: 141
+      - action: she turns around to face him, her coat flapping in the wind
+        camera: slow push in on her face
+        speaker: F
+        line: 你终于来了，我等了很久。
+  - id: S02
+    setting: rooftop terrace at dusk, warm orange sunset backlight
+    state: the two stand face to face by the railing
+    keyframe_prompt: cinematic photograph, two people face to face by a rooftop railing at dusk, warm backlight, medium close-up
+    beats:
+      - action: he reaches out and takes her hand
+        camera: close-up on their hands
+        frames: 130   # not a bucket on purpose: will snap to 141
+        speaker: M
+        line: 对不起，路上耽误了。

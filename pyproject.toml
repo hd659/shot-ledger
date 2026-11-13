@@ -1,0 +1,14 @@
+[project]
+name = "shot-ledger"
+version = "0.1.0"
+description = "CPU-first storyboard splitter & GPU render preflight: frame buckets, one-action shots, target lock, cost ledger."
+requires-python = ">=3.8"
+dependencies = []
+optional-dependencies = { yaml = ["pyyaml"] }
+
+[project.scripts]
+shot-ledger = "shot_ledger.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
